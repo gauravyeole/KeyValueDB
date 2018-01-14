@@ -1,3 +1,8 @@
+/**
+ * KeyValue Database class
+ * @author: Gaurav Yeole
+ */
+
 import java.io.IOException;
 
 public class KeyValueDB {

@@ -1,3 +1,7 @@
+/**
+ * Key-Value store database get put del implementation
+ * @author Gaurav Yeole
+ */
 import java.util.HashMap;
 
 public class KVStore implements DataBaseInterface {

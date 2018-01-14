@@ -1,3 +1,7 @@
+/**
+ * FileStore wrapper interface for putFile and getFile
+ * @author Gaurav Yeole
+ */
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
@@ -17,6 +21,12 @@ public class FileStore {
         fileSizeMap = new HashMap<>();
     }
 
+    /**
+     * put file data in the key-value datastore
+     * @param filename
+     * @return true if put is successful
+     * @throws IOException
+     */
     public boolean putFile(String filename) throws IOException {
         String content = readFileAsString(filename);
         int blkNo = 0;
@@ -29,6 +39,11 @@ public class FileStore {
         return true;
     }
 
+    /**
+     * get file data stored in key-value database
+     * @param filename
+     * @return string of stored file
+     */
     public String getFile(String filename){
 
         int noBlks = fileSizeMap.getOrDefault(filename,-1);
@@ -48,6 +63,25 @@ public class FileStore {
         return sb.toString();
     }
 
+    /**
+     * remove the file stored in key-value database
+     * @param fileName
+     * @return true if delete is successful
+     */
+    public boolean delFile(String fileName){
+        int noBlks = fileSizeMap.getOrDefault(fileName,-1);
+        if(noBlks < 0){
+            System.out.println(fileName+" file is not stored in the databse ");
+            return false;
+        }
+
+        StringBuilder sb = new StringBuilder();
+        for(int i=0; i<noBlks; i++){
+            String substring = dataStore.get(getKey(fileName,Integer.toString(i)));
+            if(substring != null)   sb.append(substring);
+        }
+        return true;
+    }
 
     /**
      * readFileAsString reads file names fineName and returns it's content as a String
