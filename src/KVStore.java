@@ -3,7 +3,7 @@ import java.util.HashMap;
 public class KVStore implements DataBaseInterface {
     private HashMap<String, String> dictionary = null;
 
-    public KeyValueDB(){
+    public KVStore(){
         resetStore();
     }
 
@@ -11,15 +11,23 @@ public class KVStore implements DataBaseInterface {
         dictionary = new HashMap<>();
     }
 
+    @Override
     public boolean put(String key, String value){
-//        TODO: Implement Me!
+          this.dictionary.put(key, value);
+          String existingValue = get(key);
+          if(existingValue == null) {
+              return false;
+          }
+          return true;
     }
 
+    @Override
     public String get(String key){
-//        TODO: Implemtnt Me!
+        return this.dictionary.get(key);
     }
 
-    public boolean del(String key){
-//        TODO: Implement Me!
+    @Override
+    public void del(String key){
+        this.dictionary.remove(key);
     }
 }

@@ -1,6 +1,6 @@
 import java.util.HashMap;
 
-public class KeyValueDB implements DataBaseInterface {
+public class KeyValueDB {
 
 
 

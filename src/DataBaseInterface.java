@@ -26,5 +26,5 @@ public interface DataBaseInterface {
      * @param key is the object whose entry needs to be deleted from the database
      * @return whether delete operation was successful
      */
-    public boolean del(String key);
+    public void del(String key);
 }
