@@ -23,7 +23,7 @@ public class KVStore implements DataBaseInterface {
 
     @Override
     public String get(String key){
-        return this.dictionary.get(key);
+        return this.dictionary.getOrDefault(key,null);
     }
 
     @Override
