@@ -1,7 +1,6 @@
 /*
 * Abstract Interface fot Key-Value Store Database
 * @author Gaurav Yeole
-*
 * */
 
 public interface DataBaseInterface {
